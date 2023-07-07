@@ -1,5 +1,6 @@
 let timer;
 let timerCount;
+let points = "";
 let timerElement = document.querySelector("#timer-element");
 let startButton = document.querySelector("#start-button")
 let choiceOne = document.querySelector("#button-1");
@@ -11,7 +12,6 @@ startButton.addEventListener("click", startGame);
 
 function startGame () {
     timerCount = 10;
-    startButton.disabled = true;
     startTimer ();
 }
 
@@ -22,5 +22,14 @@ function startTimer () {
     if (timerCount === 0) {
         clearInterval(timer);
     }
-    }, 100)}
+    endGame();
+}, 100)}
+
+function endGame () {
+    if (points > 5 && timerCount > 0) {
+        winGame ();
+    } else {
+        loseGame ();
+    }
+}
     
