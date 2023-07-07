@@ -25,6 +25,8 @@ function startTimer () {
     endGame();
 }, 100)}
 
+
+
 function endGame () {
     if (points > 5 && timerCount > 0) {
         winGame ();

@@ -17,3 +17,20 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
+
+
+
+
+## TO DO
+- timer penalty
+- questions and answers
+- calculate score
+- initials input
+- track score
+- endGame sets score and initials to local storage
+- 
+
+
+
+if 'input' === true, then score++;
+if 'input' === false, then timerCount--;
