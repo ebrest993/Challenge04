@@ -3,6 +3,8 @@ let timerCount;
 let points = "";
 let timerElement = document.querySelector("#timer-element");
 let startButton = document.querySelector("#start-button")
+let questionOne = document.querySelector("#form-1");
+let questionTwo = document.querySelector("#form-2");
 let choiceOne = document.querySelector("#button-1");
 let choiceTwo = document.querySelector("#button-2");
 let choiceThree = document.querySelector("#button-3");
@@ -23,7 +25,7 @@ function startTimer () {
         clearInterval(timer);
     }
     endGame();
-}, 100)}
+}, 1000)}
 
 
 
@@ -33,5 +35,27 @@ function endGame () {
     } else {
         loseGame ();
     }
+}
+    
+// function test () {
+//     if (choiceTwo.style.display = "block") {
+//         choiceTwo.style.display = "none";
+//     }
+//     event.preventDefault();
+//     }
+
+function askQuestOne () {
+    if (questionOne.style.display = "none") {
+        questionOne.style.display = "block";
+    }
+    event.preventDefault();
+}
+
+function askQuestTwo () {
+    if (questionTwo.style.display = "none") {
+        questionOne.style.display = "none";
+        questionTwo.style.display = "block";
+    }
+    event.preventDefault();
 }
     

@@ -34,3 +34,13 @@ THEN I can save my initials and score
 
 if 'input' === true, then score++;
 if 'input' === false, then timerCount--;
+
+
+
+Questions
+
+What does 'HTML' stand for?
+Hyper Text Markup Language
+
+What does CSS stand for?
+Cascading Style Sheets

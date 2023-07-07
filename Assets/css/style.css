@@ -6,3 +6,11 @@
     background-color: purple;
     color: white;
 }
+
+#form-1 {
+    display: none;
+}
+
+#form-2 {
+    display: none;
+}

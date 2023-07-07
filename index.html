@@ -12,13 +12,21 @@
     <h1>Welcome to Your Very Own Coding Quiz!</h1>
     <div id="timer-element">10</div>
         <div id="countdown">seconds left!</div>
-        <button class="button" id="start-button">START GAME</button>
-    <form>
-        <h2>Question goes here</h2>
-            <button class="button" id="button-1">Choice</button>
-            <button class="button" id="button-2">Other Choice</button>
-            <button class="button" id="button-3">The Choice You'll Probably Pick (statistically)</button>
-            <button class="button" id="button-4">Requisite 4th Choice</button>
+    <button class="button" id="start-button" onclick="askQuestOne()">START GAME</button>
+    <form id="form-1">
+        <h2>What does 'HTML' stand for?</h2>
+            <button class="button" id="button-1" onclick="askQuestTwo()">Hilda's Tall Militia Locker</button>
+            <button class="button" id="button-2" onclick="askQuestTwo()">Helping Tiny Men Lately</button>
+            <button class="button" id="button-3" onclick="askQuestTwo()">Hyper Text Mark Up Language</button>
+            <button class="button" id="button-4" onclick="askQuestTwo()">Hyper Talking Monitored by Larry</button>
+    </form>
+    <form id="form-2">
+        <h2>What does 'CSS' stand for?</h2>
+            <button class="button" id="button-5">Cascading Style Sheets</button>
+            <button class="button" id="button-6">Complimentary Swim Suits</button>
+            <button class="button" id="button-7">Calculating Stupid Stuff</button>
+            <button class="button" id="button-8">Canonical Silly Songs</button>
+
     </form>
     <script src="./Assets/js/script.js"></script>
   </body>
