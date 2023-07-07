@@ -14,3 +14,9 @@
 #form-2 {
     display: none;
 }
+
+.score {
+    display: inline;
+    margin-top: 5rem;
+    border: groove; 
+}
