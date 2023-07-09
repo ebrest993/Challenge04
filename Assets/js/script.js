@@ -5,6 +5,8 @@ let timerElement = document.querySelector("#timer-element");
 let startButton = document.querySelector("#start-button")
 let questionOne = document.querySelector("#form-1");
 let questionTwo = document.querySelector("#form-2");
+let questionThree = document.querySelector("#form-3");
+let button = document.querySelector("button");
 let choiceOne = document.querySelector("#button-1");
 let choiceTwo = document.querySelector("#button-2");
 let choiceThree = document.querySelector("#button-3");
@@ -24,7 +26,6 @@ function startTimer () {
     if (timerCount === 0) {
         clearInterval(timer);
     }
-    endGame();
 }, 1000)}
 
 
@@ -37,17 +38,10 @@ function endGame () {
     }
 }
     
-// function test () {
-//     if (choiceTwo.style.display = "block") {
-//         choiceTwo.style.display = "none";
-//     }
-//     event.preventDefault();
-//     }
-
-function askQuestOne () {
-    if (questionOne.style.display = "none") {
-        questionOne.style.display = "block";
-    }
+function askQuestOne (event) {
+    if (questionOne.display = "none") {
+    questionOne.display = "block";
+    }; 
     event.preventDefault();
 }
 
@@ -55,7 +49,26 @@ function askQuestTwo () {
     if (questionTwo.style.display = "none") {
         questionOne.style.display = "none";
         questionTwo.style.display = "block";
-    }
+        }
     event.preventDefault();
 }
     
+function askQuestThree () {
+        questionTwo.style.display = "none";
+        questionThree.style.display = "block";
+    event.preventDefault();
+
+}
+
+// function askQuestFour () {
+//     
+//     event.preventDefault();
+// }
+
+// function askQuestFive () {
+//     if (questionTwo.style.display = "none") {
+//         questionOne.style.display = "none";
+//         questionTwo.style.display = "block";
+//     }
+//     event.preventDefault();
+// }
