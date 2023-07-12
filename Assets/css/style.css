@@ -2,21 +2,9 @@
     background-color: bisque;
 }
 
-.button:hover {
+button:hover {
     background-color: purple;
     color: white;
-}
-
-#form-1 {
-    display: none;
-}
-
-#form-2 {
-    display: none;
-}
-
-#form-3 {
-    display: none;
 }
 
 .score {

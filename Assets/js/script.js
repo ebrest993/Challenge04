@@ -1,7 +1,10 @@
+let timer;
+let timerCount;
+let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
 let score = "";
 
-const quest1 = [
+let quest1 = [
     question ="How many licks does it take to get to the center of a Tootsie Pop?",
     answer1 = "A lot. Uhkay? A lot.",
     correct = "Um, idk. My BFF Jill?",
@@ -23,7 +26,23 @@ const quest3 = [
     answer4 = "Hyper Talking Monitored by Larry"
 ];
 
-button.addEventListener("click", questOne);
+button.addEventListener("click", startGame);
+
+function startGame () {
+    timerCount = 30;
+    startTimer ();
+    questOne();
+}
+
+function startTimer () {
+    timer = setInterval(function() {
+        timerCount--;
+        timerElement.textContent = timerCount;
+    if (timerCount === 0) {
+        clearInterval(timer);
+    }
+}, 1000)}
+
 
 function test () {
     localStorage.setItem("score", score);
@@ -39,7 +58,9 @@ function questOne () {
         btn.innerHTML = quest1[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questTwo);
-    }
+    }    
+    let yes = quest1[1];
+    yes.addEventListener("click", addScore);
 }
 
 function questTwo () {
@@ -62,13 +83,13 @@ function questThree () {
         btn.innerHTML = quest3[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", checkCorrect);
-    }}
+    }
+}
 
 // function inBetween () {
 //     document.querySelector("body").remove();
 // }
-function checkCorrect () {
-    correct.addEventListener("click");
+function addScore () {
     localStorage.setItem("score", score);
     score++;
     }
@@ -109,100 +130,6 @@ function checkCorrect () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // let timer;
-// // let timerCount;
 // // let points = "";
 // // let timerElement = document.querySelector("#timer-element");
 // // let startButton = document.querySelector("#start-button")
@@ -217,23 +144,7 @@ function checkCorrect () {
 
 // startButton.addEventListener("click", startGame);
 
-// function startGame (event) {
-//     timerCount = 10;
-//     startTimer ();
-//     event.questionOne.setAttribute(
-//         "display",
-//         "block"
-//     );
-// }
 
-// function startTimer () {
-//     timer = setInterval(function() {
-//         timerCount--;
-//         timerElement.textContent = timerCount;
-//     if (timerCount === 0) {
-//         clearInterval(timer);
-//     }
-// }, 1000)}
 
 
 
