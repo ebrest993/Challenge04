@@ -3,6 +3,7 @@ let timerCount;
 let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
 let score = "";
+let initials = "";
 let numOne = document.querySelector("numOne");
 
 const quest1 = [
@@ -16,27 +17,23 @@ const quest2 = [
     question = "Where in the world is Carmen San Diego?",
     correct = "Probably LA. Beautiful this time of year.",
     answer1 = "She still doing that whole thing?",
-    answer3 = "I say good for her, wherever she is.",
-    answer4 = "Eight."
+    answer2 = "I say good for her, wherever she is.",
+    answer3 = "Eight."
 ];
 const quest3 = [
     question = "What does HTML stand for?",
     answer1 = "Hilda's Tall Militia Locker",
     correct = "Hyper Text Mark Up Language",
-    answer3 = "Helping Tiny Men Lately",
-    answer4 = "Hyper Talking Monitored by Larry"
+    answer2 = "Helping Tiny Men Lately",
+    answer3 = "Hyper Talking Monitored by Larry"
 ];
-
-let userChoice1 = quest1[2];
-let userChoice2 = quest2[1];
-let userChoice3 = quest3[2];
 
 button.addEventListener("click", startGame);
 
 function startGame () {
     button.disabled = true;
     timerCount = 30;
-    startTimer ();
+    startTimer();
     questOne();
 }
 
@@ -64,9 +61,16 @@ function questOne () {
         btn.innerHTML = quest1[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questTwo);
-    }    
-   
-    addScore();
+        if (btn.innerHTML === quest1[2]) {
+            console.log("correct");
+            btn.addEventListener("click", addScore);
+        } else {
+            btn.addEventListener("click", function() {
+            console.log("wrong");
+            timerCount = timerCount - 5;
+            });
+        }} 
+    addScore();   
 }
 
 function questTwo () {
@@ -78,6 +82,15 @@ function questTwo () {
         btn.innerHTML = quest2[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questThree);
+        if (btn.innerHTML === quest2[1]) {
+            console.log("correct");
+            btn.addEventListener("click", addScore);
+        } else {
+            btn.addEventListener("click", function() {
+            console.log("wrong");
+            timerCount = timerCount - 5;
+        });
+        }
     }
 }   
 
@@ -90,8 +103,16 @@ function questThree () {
         btn.innerHTML = quest3[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", addScore);
+        if (btn.innerHTML === quest3[2]) {
+            console.log("correct");
+            btn.addEventListener("click", addScore);
+        } else {
+            btn.addEventListener("click", function() {
+            console.log("wrong");
+            timerCount = timerCount - 5;
+            });
+        }   
         btn.addEventListener("click", endGame);
-
     }
 }
 
@@ -102,7 +123,8 @@ function addScore () {
 
 function endGame () {
     clearInterval(timer);
-    let initials = document.createElement("textarea");
+    initials = document.createElement("textarea");
+    initials.setAttribute("placeholder", "Enter Initials");
     let submit = document.createElement("button");
     submit.setAttribute("display", "block");
     submit.innerHTML = "SUBMIT";
@@ -115,98 +137,3 @@ function setScore () {
     localStorage.setItem("initials", initials);
     button.disabled = false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// for (i = 1; i < quest1.length; i++) {
-//     quest1[i].disabled = true;
-// }
-
-
-// function askQuestion (question) {
-//     let quest1 = document.createElement("div")
-//     quest1.innerHTML = question;
-//     document.appendChild(quest1);
-//     console.log(question);
-// }
-
-// button.onclick = function(){
-//     score++;
-//     console.log(score);
-//     localStorage.setItem("score", score);
-// };
-
-
-
-
-// // let points = "";
-// // let timerElement = document.querySelector("#timer-element");
-// // let startButton = document.querySelector("#start-button")
-// // let questionOne = document.querySelector("#form-1");
-// // let questionTwo = document.querySelector("#form-2");
-// // let questionThree = document.querySelector("#form-3");
-// // let button = document.querySelector("button");
-// // let choiceOne = document.querySelector("#button-1");
-// // let choiceTwo = document.querySelector("#button-2");
-// // let choiceThree = document.querySelector("#button-3");
-// // let choiceFour = document.querySelector("#button-4");
-
-// startButton.addEventListener("click", startGame);
-
-
-
-
-
-// function endGame () {
-//     if (points > 5 && timerCount > 0) {
-//         winGame ();
-//     } else {
-//         loseGame ();
-//     }
-// }
-    
-// // function askQuestOne () {
-// //     // if (questionOne.display = "none") {
-// //     questionOne.display = "block";
-// //     // }; 
-// //     // event.preventDefault();
-// // }
-
-// function askQuestTwo () {
-//     if (questionTwo.style.display = "none") {
-//         questionOne.style.display = "none";
-//         questionTwo.style.display = "block";
-//         }
-//     event.preventDefault();
-// }
-    
-// function askQuestThree () {
-//         questionTwo.style.display = "none";
-//         questionThree.style.display = "block";
-//     event.preventDefault();
-
-// }
-
-// // function askQuestFour () {
-// //     
-// //     event.preventDefault();
-// // }
-
-// // function askQuestFive () {
-// //     if (questionTwo.style.display = "none") {
-// //         questionOne.style.display = "none";
-// //         questionTwo.style.display = "block";
-// //     }
-// //     event.preventDefault();
-// // }
