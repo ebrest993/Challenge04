@@ -7,17 +7,17 @@ let initials = "";
 let numOne = document.querySelector("numOne");
 
 const quest1 = [
-    question = "How many licks does it take to get to the center of a Tootsie Pop?",
-    answer1 = "A lot. Uhkay? A lot.",
-    correct = "Um, idk. My BFF Jill?",
+    question = "What does 'CSS' stand for?",
+    answer1 = "A lot. Uhkay? Just. A lot.",
+    correct = "Cascading Style Sheets",
     answer2 = "Who cares?",
     answer3 = "Eight."
 ];
 const quest2 = [
-    question = "Where in the world is Carmen San Diego?",
-    correct = "Probably LA. Beautiful this time of year.",
-    answer1 = "She still doing that whole thing?",
-    answer2 = "I say good for her, wherever she is.",
+    question = "How do you log something to the console?",
+    correct = "console.log(_____);",
+    answer1 = "let console = _____;",
+    answer2 = "for (i = 0; i < _____; i++)",
     answer3 = "Eight."
 ];
 const quest3 = [
@@ -27,6 +27,22 @@ const quest3 = [
     answer2 = "Helping Tiny Men Lately",
     answer3 = "Hyper Talking Monitored by Larry"
 ];
+
+const quest4 = [
+    question = "What is a callback function?"
+    answer1 = "A gathering of out of work actors."
+    answer2 = "An event meant to listen for a user interaction.",
+    correct = "A function passed into another function as an argument.",
+    answer3 = "Eight."
+];
+
+const quest5 = [
+    question = "What is an array?",
+    answer1 = "Basically a string",
+    answer2 = "The middle of the word 'batarang'.",
+    correct = "A collection of items of same data type stored at contiguous memory locations."
+    answer3 = "Eight"
+]
 
 button.addEventListener("click", startGame);
 

@@ -44,3 +44,22 @@ Hyper Text Markup Language
 
 What does CSS stand for?
 Cascading Style Sheets
+
+
+What is a callback function?
+A function passed into another function as an argument
+A gathering of out of work actors
+An event meant to listen to an action, like a keystroke or a mouse click
+Eight.
+
+What is an array?
+Basically a string
+A collection of items of same data type stored at contiguous memory locations
+The middle part of the word "batarang"
+Eight.
+
+How do you log something in the console?
+console.log("_____");
+let variable = _____;
+for (i = 0; i < _____; i++)
+Eight.
