@@ -12,3 +12,33 @@ button:hover {
     margin-top: 5rem;
     border: groove; 
 }
+
+body {
+    text-align: center;
+}
+
+h1 {
+    font-family: "Zapfino", "Cracked", serif;
+}
+
+#bigbutton {
+    margin: 3rem;
+}
+
+#timerEl {
+    font-size: 4rem;
+    margin-bottom: -1rem;
+}
+
+#time-rem {
+    font-style: italic;
+    font-weight: 800;
+}
+
+textarea {
+    margin-top: 3rem;
+}
+
+.numOne {
+    display: auto;
+}

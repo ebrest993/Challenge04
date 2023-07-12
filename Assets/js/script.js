@@ -3,9 +3,10 @@ let timerCount;
 let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
 let score = "";
+let numOne = document.querySelector("numOne");
 
 let quest1 = [
-    question ="How many licks does it take to get to the center of a Tootsie Pop?",
+    question = "How many licks does it take to get to the center of a Tootsie Pop?",
     answer1 = "A lot. Uhkay? A lot.",
     correct = "Um, idk. My BFF Jill?",
     answer2 = "Who cares?",
@@ -26,9 +27,11 @@ const quest3 = [
     answer4 = "Hyper Talking Monitored by Larry"
 ];
 
-button.addEventListener("click", endGame);
+console.log(numOne);
+button.addEventListener("click", startGame);
 
 function startGame () {
+    button.disabled = true;
     timerCount = 30;
     startTimer ();
     questOne();
@@ -50,10 +53,12 @@ function test () {
 
 function questOne () {
     qst = document.createElement("body");
+    qst.setAttribute("class", "numOne");
     qst.innerHTML = quest1[0];
     document.body.appendChild(qst);    
     for (i = 1; i < quest1.length; i++) {
         btn = document.createElement("button");
+        btn.setAttribute("class", "numOne");
         btn.innerHTML = quest1[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questTwo);
@@ -62,6 +67,9 @@ function questOne () {
 }
 
 function questTwo () {
+    // if (numOne.style.display === "auto"); {
+    // numOne.setAttribute("display", "none");
+    // }
     let qst = document.createElement("body");
     qst.innerHTML = quest2[0];
     document.body.appendChild(qst);
@@ -70,7 +78,9 @@ function questTwo () {
         btn.innerHTML = quest2[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questThree);
-    }}
+    }
+    disabled = true;
+}   
 
 function questThree () {
     let qst = document.createElement("body");
@@ -81,6 +91,8 @@ function questThree () {
         btn.innerHTML = quest3[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", addScore);
+        btn.addEventListener("click", endGame);
+
     }
 }
 
@@ -97,9 +109,11 @@ function addScore () {
     }
 
 function endGame () {
+    clearInterval(timer);
     let initials = document.createElement("textarea");
     let submit = document.createElement("button");
-    initials.innerHTML = "please enter your initials";
+    submit.setAttribute("display", "block");
+    // initials.innerHTML = "please enter your initials";
     submit.innerHTML = "SUBMIT";
     document.body.appendChild(initials);
     document.body.appendChild(submit);
@@ -108,6 +122,7 @@ function endGame () {
 
 function setScore () {
     localStorage.setItem("initials", initials);
+    button.disabled = false;
 }
 
 
