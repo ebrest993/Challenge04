@@ -5,7 +5,7 @@ let button = document.querySelector("#bigbutton");
 let score = "";
 let numOne = document.querySelector("numOne");
 
-let quest1 = [
+const quest1 = [
     question = "How many licks does it take to get to the center of a Tootsie Pop?",
     answer1 = "A lot. Uhkay? A lot.",
     correct = "Um, idk. My BFF Jill?",
@@ -27,7 +27,10 @@ const quest3 = [
     answer4 = "Hyper Talking Monitored by Larry"
 ];
 
-console.log(numOne);
+let userChoice1 = quest1[2];
+let userChoice2 = quest2[1];
+let userChoice3 = quest3[2];
+
 button.addEventListener("click", startGame);
 
 function startGame () {
@@ -58,18 +61,15 @@ function questOne () {
     document.body.appendChild(qst);    
     for (i = 1; i < quest1.length; i++) {
         btn = document.createElement("button");
-        btn.setAttribute("class", "numOne");
         btn.innerHTML = quest1[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questTwo);
     }    
+   
     addScore();
 }
 
 function questTwo () {
-    // if (numOne.style.display === "auto"); {
-    // numOne.setAttribute("display", "none");
-    // }
     let qst = document.createElement("body");
     qst.innerHTML = quest2[0];
     document.body.appendChild(qst);
@@ -79,7 +79,6 @@ function questTwo () {
         document.body.appendChild(btn);
         btn.addEventListener("click", questThree);
     }
-    disabled = true;
 }   
 
 function questThree () {
@@ -96,14 +95,7 @@ function questThree () {
     }
 }
 
-// function inBetween () {
-//     document.querySelector("body").remove();
-// }
-
 function addScore () {
-    if (quest1[2] === true) {
-        console.log("yish");
-    }
     localStorage.setItem("score", score);
     score++;
     }
@@ -113,7 +105,6 @@ function endGame () {
     let initials = document.createElement("textarea");
     let submit = document.createElement("button");
     submit.setAttribute("display", "block");
-    // initials.innerHTML = "please enter your initials";
     submit.innerHTML = "SUBMIT";
     document.body.appendChild(initials);
     document.body.appendChild(submit);
@@ -138,6 +129,9 @@ function setScore () {
 
 
 
+// for (i = 1; i < quest1.length; i++) {
+//     quest1[i].disabled = true;
+// }
 
 
 // function askQuestion (question) {
