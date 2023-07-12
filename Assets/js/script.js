@@ -26,7 +26,7 @@ const quest3 = [
     answer4 = "Hyper Talking Monitored by Larry"
 ];
 
-button.addEventListener("click", startGame);
+button.addEventListener("click", endGame);
 
 function startGame () {
     timerCount = 30;
@@ -43,7 +43,6 @@ function startTimer () {
     }
 }, 1000)}
 
-
 function test () {
     localStorage.setItem("score", score);
     score++;
@@ -52,15 +51,14 @@ function test () {
 function questOne () {
     qst = document.createElement("body");
     qst.innerHTML = quest1[0];
-    document.body.appendChild(qst);
+    document.body.appendChild(qst);    
     for (i = 1; i < quest1.length; i++) {
         btn = document.createElement("button");
         btn.innerHTML = quest1[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questTwo);
     }    
-    let yes = quest1[1];
-    yes.addEventListener("click", addScore);
+    addScore();
 }
 
 function questTwo () {
@@ -82,22 +80,35 @@ function questThree () {
         let btn = document.createElement("button");
         btn.innerHTML = quest3[i];
         document.body.appendChild(btn);
-        btn.addEventListener("click", checkCorrect);
+        btn.addEventListener("click", addScore);
     }
 }
 
 // function inBetween () {
 //     document.querySelector("body").remove();
 // }
+
 function addScore () {
+    if (quest1[2] === true) {
+        console.log("yish");
+    }
     localStorage.setItem("score", score);
     score++;
     }
 
+function endGame () {
+    let initials = document.createElement("textarea");
+    let submit = document.createElement("button");
+    initials.innerHTML = "please enter your initials";
+    submit.innerHTML = "SUBMIT";
+    document.body.appendChild(initials);
+    document.body.appendChild(submit);
+    submit.addEventListener("submit", setScore);
+}
 
-
-
-
+function setScore () {
+    localStorage.setItem("initials", initials);
+}
 
 
 
