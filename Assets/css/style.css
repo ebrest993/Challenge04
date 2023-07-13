@@ -21,7 +21,7 @@ button {
 }
 
 #submit-button {
-    margin-left: 1.5rem;
+    margin-left: 9.5rem;
 }
 
 div {
@@ -46,29 +46,45 @@ body {
 }
 
 h1 {
-    font-family: "Zapfino", "Cracked", serif;
+    font-family: serif;
+    text-align: left;
+}
+
+h2 {
+    font-size: .8rem;
+    text-align: left;
+    margin-top: -1rem;
+    margin-left: .4rem;
 }
 
 #bigbutton {
-    margin: 3rem;
+    margin: 2rem 3.75rem 3rem;
     font-weight: bolder;
 }
 
 #timerEl {
     font-size: 4rem;
-    margin-bottom: -1rem;
+    margin-bottom: -2rem;
+    margin-left: 5rem;
+
 }
 
 #time-rem {
     font-style: italic;
     font-weight: 800;
+    margin-left: 4.4rem;
 }
 
 textarea {
+    border-color: black;
+    border-width: .15rem;
+    border-style: groove;
+    display: block;
     justify-content: start;
     text-align: center;
     height: 1rem;
     margin-top: 3rem;
+    margin-left: 1.5rem;
 }
 
 .numOne {
