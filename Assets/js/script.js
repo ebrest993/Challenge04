@@ -6,6 +6,8 @@ let score = 0;
 let initials = "";
 let submitButton = document.getElementById("#submit-button");
 let scoreTab = document.querySelector("#score-tab");
+// let storageItem;
+
 // let emptyForm = document.getElementById("questForm");
 // let numOne = document.querySelector("numOne");
 
@@ -46,12 +48,14 @@ const quest5 = [
     correct = "A collection of items of same data type stored at contiguous memory locations.",
     answer3 = "Eight"
 ]
-
 button.addEventListener("click", startGame);
 scoreTab.addEventListener("click", viewScores);
 
 function viewScores () {
-    console.log("yippee ki yay");
+    window.open("", "_blank").focus();
+    scoreTab = document.createAttribute("div");
+    scoreTab = localStorage.getItem("initials");
+    scoreTab = localStorage.getItem("hiScore");
 }
 
 function startGame () {
@@ -70,10 +74,6 @@ function startTimer () {
     }
 }, 1000)}
 
-function test () {
-    localStorage.setItem("score", score);
-    score++;
-}
 
 function questOne () {
     let qst = document.createElement("div");
@@ -194,6 +194,7 @@ function endGame () {
     document.getElementById("numFive").remove();
     clearInterval(timer);
     initials = document.createElement("textarea");
+    // initials.setAttribute("id")
     initials.setAttribute("placeholder", "Enter Initials");
     initials.setAttribute("maxlength", "3");
     let submit = document.createElement("button");
@@ -202,12 +203,13 @@ function endGame () {
     submit.innerHTML = "SUBMIT";
     document.body.appendChild(initials);
     document.body.appendChild(submit);
+    submitButton = document.addEventListener("click", setScore);
 }
 
 
 
-function setScore (event) {
-    if (event.target && event.target.matches("#submit-button"));
+function setScore () {
+    // if (event.target && event.target.matches("#submit-button"));
     console.log("SO CLOSE");
     event.preventDefault();
     let initials = document.querySelector("textarea") && document.querySelector("textarea").value;
