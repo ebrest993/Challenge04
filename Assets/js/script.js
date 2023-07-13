@@ -57,7 +57,7 @@ function startTimer () {
     timer = setInterval(function() {
         timerCount--;
         timerElement.textContent = timerCount;
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
         clearInterval(timer);
     }
 }, 1000)}
@@ -117,12 +117,14 @@ function questTwo () {
 
 function questThree () {
     document.getElementById("numTwo").remove();
+    document.getElementsByClassName("buttons").disable;
     let qst = document.createElement("div");
     qst.setAttribute("id", "numThree");
     qst.innerHTML = quest3[0];
     document.body.appendChild(qst);
     for (i = 1; i < quest3.length; i++) {
         let btn = document.createElement("button");
+        btn.setAttribute("class", "buttons");
         btn.innerHTML = quest3[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questFour);
