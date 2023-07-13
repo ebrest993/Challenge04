@@ -4,6 +4,7 @@ let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
 let score = "";
 let initials = "";
+let emptyForm = document.getElementById("questForm");
 let numOne = document.querySelector("numOne");
 
 const quest1 = [
@@ -71,12 +72,11 @@ function questOne () {
     let qst = document.createElement("div");
     qst.setAttribute("id", "numOne");
     qst.innerHTML = quest1[0];
-    document.body.appendChild(qst);    
+    emptyForm = document.body.appendChild(qst);    
     for (i = 1; i < quest1.length; i++) {
         let btn = document.createElement("button");
         btn.setAttribute("class", "buttons");
         btn.innerHTML = quest1[i];
-        // document.body.appendChild(btn);
         qst.append(btn);
         btn.addEventListener("click", questTwo);
         if (btn.innerHTML === quest1[2]) {
@@ -101,7 +101,7 @@ function questTwo () {
         let btn = document.createElement("button");
         btn.setAttribute("class", "buttons");
         btn.innerHTML = quest2[i];
-        document.body.appendChild(btn);
+        qst.append(btn);
         btn.addEventListener("click", questThree);
         if (btn.innerHTML === quest2[1]) {
             console.log("correct");
@@ -126,7 +126,7 @@ function questThree () {
         let btn = document.createElement("button");
         btn.setAttribute("class", "buttons");
         btn.innerHTML = quest3[i];
-        document.body.appendChild(btn);
+        qst.append(btn);
         btn.addEventListener("click", questFour);
         if (btn.innerHTML === quest3[2]) {
             btn.addEventListener("click", addScore);
@@ -149,7 +149,7 @@ function questFour () {
         let btn = document.createElement("button");
         btn.setAttribute("class", "buttons");
         btn.innerHTML = quest4[i];
-        document.body.appendChild(btn);
+        qst.append(btn);
         btn.addEventListener("click", questFive);
         if (btn.innerHTML === quest4[3]) {
             console.log("correct");
@@ -172,7 +172,7 @@ function questFive () {
         let btn = document.createElement("button");
         btn.setAttribute("class", "buttons");
         btn.innerHTML = quest5[i];
-        document.body.appendChild(btn);
+        qst.append(btn);
         btn.addEventListener("click", addScore);
         if (btn.innerHTML === quest5[3]) {
             console.log("correct");
@@ -193,9 +193,11 @@ function addScore () {
     }
 
 function endGame () {
+    document.getElementById("numFive").remove();
     clearInterval(timer);
     initials = document.createElement("textarea");
     initials.setAttribute("placeholder", "Enter Initials");
+    initials.setAttribute("maxlength", "3");
     let submit = document.createElement("button");
     submit.setAttribute("display", "block");
     submit.setAttribute("id", "submit-button");
