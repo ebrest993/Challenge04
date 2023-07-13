@@ -2,7 +2,7 @@ let timer;
 let timerCount;
 let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
-let score = "";
+let score = 0;
 let initials = "";
 let emptyForm = document.getElementById("questForm");
 let numOne = document.querySelector("numOne");
@@ -80,11 +80,9 @@ function questOne () {
         qst.append(btn);
         btn.addEventListener("click", questTwo);
         if (btn.innerHTML === quest1[2]) {
-            console.log("correct");
             btn.addEventListener("click", addScore);
         } else {
             btn.addEventListener("click", function() {
-            console.log("wrong");
             timerCount = timerCount - 5;
             });
         }}
@@ -104,11 +102,9 @@ function questTwo () {
         qst.append(btn);
         btn.addEventListener("click", questThree);
         if (btn.innerHTML === quest2[1]) {
-            console.log("correct");
             btn.addEventListener("click", addScore);
         } else {
             btn.addEventListener("click", function() {
-            console.log("wrong");
             timerCount = timerCount - 5;
         });
         }
@@ -152,11 +148,9 @@ function questFour () {
         qst.append(btn);
         btn.addEventListener("click", questFive);
         if (btn.innerHTML === quest4[3]) {
-            console.log("correct");
             btn.addEventListener("click", addScore);
         } else {
             btn.addEventListener("click", function() {
-            console.log("wrong");
             timerCount = timerCount - 5;
         });
         }
@@ -175,11 +169,9 @@ function questFive () {
         qst.append(btn);
         btn.addEventListener("click", addScore);
         if (btn.innerHTML === quest5[3]) {
-            console.log("correct");
             btn.addEventListener("click", addScore);
         } else {
             btn.addEventListener("click", function() {
-            console.log("wrong");
             timerCount = timerCount - 5;
         });
         }    
@@ -188,8 +180,7 @@ function questFive () {
 }   
 
 function addScore () {
-    localStorage.setItem("score", score);
-    score++;
+    score = score + 2;
     }
 
 function endGame () {
@@ -212,9 +203,8 @@ document.addEventListener("click", setScore);
 function setScore (event) {
     if (event.target && event.target.matches("#submit-button"))
     event.preventDefault();
-    console.log("click and submit button");
     let initials = document.querySelector("textarea") && document.querySelector("textarea").value;
-    let hiScore = timerCount;
+    let hiScore = timerCount+score;
     let storageItem;
     if (localStorage.getItem("highScores")) {
         storageItem = JSON.parse(localStorage.getItem("highScores"));
@@ -224,5 +214,6 @@ function setScore (event) {
     storageItem.push({initials, hiScore});
     localStorage.setItem("highScores", JSON.stringify(storageItem));
     button.disabled = false;
+console.log(hiScore);
 }
 
