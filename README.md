@@ -1,65 +1,33 @@
-# Coding-Quiz
-Challenge 4: The Coding Quiz
+## THIS IS A CODING QUIZ WEBSITE ##
 
+# What follows is an explanation of functions and variables
 
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+# Question/Answer Arrays
 
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
+I elected to put my questions and answers alongside one another in arrays. I've been told several times this was the more complicated way to go about this project, but by then it was too late to start over. So I proceeded to make it work as best as possible.
 
+# START GAME FUNCTION
 
+Upon starting the game, the "start game" button is disabled, and the timer starts, simultaneously pulling up the first question.
 
+# QUESTION ONE
 
-## TO DO
-- timer penalty
-- questions and answers
-- calculate score
-- initials input
-- track score
-- endGame sets score and initials to local storage
-- 
+This function creates a div element, and populates it with the first question and four answer buttons. A for loop is used to generate the buttons themselves and populate them with said answers. An if/else statement is used to determine if the user has given a correct answer (which adds to their score), or an incorrect answer (which deducts 5 seconds from the timer).
 
+# REMAINING QUESTIONS
 
+The following questions follow the same pattern, with the noted addition of a .remove() method. This removes the previous question as the user progresses through the quiz.
 
-if 'input' === true, then score++;
-if 'input' === false, then timerCount--;
+# END GAME
 
+After the final question, the user is prompted with a textarea to input their initials.
 
+# STILL TO DO
 
-Questions
+Obviously this is an incomplete challenge. I restarted several times, and found way too much on my plate as a result.
 
-What does 'HTML' stand for?
-Hyper Text Markup Language
-
-What does CSS stand for?
-Cascading Style Sheets
-
-
-What is a callback function?
-A function passed into another function as an argument
-A gathering of out of work actors
-An event meant to listen to an action, like a keystroke or a mouse click
-Eight.
-
-What is an array?
-Basically a string
-A collection of items of same data type stored at contiguous memory locations
-The middle part of the word "batarang"
-Eight.
-
-How do you log something in the console?
-console.log("_____");
-let variable = _____;
-for (i = 0; i < _____; i++)
-Eight.
+The remains of my to-do list are as follows:
+ - add remainder of the 5 questions
+ - debug the .remove() method
+ - display the high scores and initials upon completion
+ - add comments to js file

@@ -29,8 +29,8 @@ const quest3 = [
 ];
 
 const quest4 = [
-    question = "What is a callback function?"
-    answer1 = "A gathering of out of work actors."
+    question = "What is a callback function?",
+    answer1 = "A gathering of out of work actors.",
     answer2 = "An event meant to listen for a user interaction.",
     correct = "A function passed into another function as an argument.",
     answer3 = "Eight."
@@ -40,7 +40,7 @@ const quest5 = [
     question = "What is an array?",
     answer1 = "Basically a string",
     answer2 = "The middle of the word 'batarang'.",
-    correct = "A collection of items of same data type stored at contiguous memory locations."
+    correct = "A collection of items of same data type stored at contiguous memory locations.",
     answer3 = "Eight"
 ]
 
@@ -68,14 +68,16 @@ function test () {
 }
 
 function questOne () {
-    qst = document.createElement("body");
-    qst.setAttribute("class", "numOne");
+    let qst = document.createElement("div");
+    qst.setAttribute("id", "numOne");
     qst.innerHTML = quest1[0];
     document.body.appendChild(qst);    
     for (i = 1; i < quest1.length; i++) {
-        btn = document.createElement("button");
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "buttons");
         btn.innerHTML = quest1[i];
-        document.body.appendChild(btn);
+        // document.body.appendChild(btn);
+        qst.append(btn);
         btn.addEventListener("click", questTwo);
         if (btn.innerHTML === quest1[2]) {
             console.log("correct");
@@ -85,16 +87,19 @@ function questOne () {
             console.log("wrong");
             timerCount = timerCount - 5;
             });
-        }} 
-    addScore();   
+        }}
+        addScore();        
 }
 
 function questTwo () {
-    let qst = document.createElement("body");
+    document.getElementById("numOne").remove();
+    let qst = document.createElement("div");
+    qst.setAttribute("id", "numTwo");
     qst.innerHTML = quest2[0];
     document.body.appendChild(qst);
     for (i = 1; i < quest2.length; i++) {
         let btn = document.createElement("button");
+        btn.setAttribute("class", "buttons");
         btn.innerHTML = quest2[i];
         document.body.appendChild(btn);
         btn.addEventListener("click", questThree);
@@ -111,7 +116,9 @@ function questTwo () {
 }   
 
 function questThree () {
-    let qst = document.createElement("body");
+    document.getElementById("numTwo").remove();
+    let qst = document.createElement("div");
+    qst.setAttribute("id", "numThree");
     qst.innerHTML = quest3[0];
     document.body.appendChild(qst);
     for (i = 1; i < quest3.length; i++) {
@@ -120,14 +127,13 @@ function questThree () {
         document.body.appendChild(btn);
         btn.addEventListener("click", addScore);
         if (btn.innerHTML === quest3[2]) {
-            console.log("correct");
             btn.addEventListener("click", addScore);
         } else {
             btn.addEventListener("click", function() {
-            console.log("wrong");
             timerCount = timerCount - 5;
             });
-        }   
+        }
+
         btn.addEventListener("click", endGame);
     }
 }
@@ -143,13 +149,29 @@ function endGame () {
     initials.setAttribute("placeholder", "Enter Initials");
     let submit = document.createElement("button");
     submit.setAttribute("display", "block");
+    submit.setAttribute("id", "submit-button");
     submit.innerHTML = "SUBMIT";
     document.body.appendChild(initials);
     document.body.appendChild(submit);
-    submit.addEventListener("submit", setScore);
 }
 
-function setScore () {
-    localStorage.setItem("initials", initials);
+document.addEventListener("click", setScore);
+
+
+function setScore (event) {
+    if (event.target && event.target.matches("#submit-button"))
+    event.preventDefault();
+    console.log("click and submit button");
+    let initials = document.querySelector("textarea") && document.querySelector("textarea").value;
+    let hiScore = timerCount;
+    let storageItem;
+    if (localStorage.getItem("highScores")) {
+        storageItem = JSON.parse(localStorage.getItem("highScores"));
+    } else {
+        storageItem = [];
+    }
+    storageItem.push({initials, hiScore});
+    localStorage.setItem("highScores", JSON.stringify(storageItem));
     button.disabled = false;
 }
+

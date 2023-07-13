@@ -7,6 +7,20 @@ button:hover {
     color: white;
 }
 
+button {
+    display: auto;
+    margin: .25rem;
+    border-radius: 1rem;
+}
+
+div {
+    margin: .25rem;
+}
+
+.numOne {
+    text-align: center;
+}
+
 .score {
     display: inline;
     margin-top: 5rem;
