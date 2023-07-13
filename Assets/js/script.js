@@ -4,8 +4,9 @@ let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
 let score = 0;
 let initials = "";
-let emptyForm = document.getElementById("questForm");
-let numOne = document.querySelector("numOne");
+let submitButton = document.getElementById("#submit-button");
+// let emptyForm = document.getElementById("questForm");
+// let numOne = document.querySelector("numOne");
 
 const quest1 = [
     question = "What does 'CSS' stand for?",
@@ -174,8 +175,9 @@ function questFive () {
             btn.addEventListener("click", function() {
             timerCount = timerCount - 5;
         });
-        }    
+        }        
         btn.addEventListener("click", endGame);
+    
     }
 }   
 
@@ -195,10 +197,12 @@ function endGame () {
     submit.innerHTML = "SUBMIT";
     document.body.appendChild(initials);
     document.body.appendChild(submit);
+submitButton = addEventListener("click", setScore);
+
 }
 
-document.addEventListener("click", setScore);
 
+// document.addEventListener("click", setScore);
 
 function setScore (event) {
     if (event.target && event.target.matches("#submit-button"))
@@ -214,6 +218,6 @@ function setScore (event) {
     storageItem.push({initials, hiScore});
     localStorage.setItem("highScores", JSON.stringify(storageItem));
     button.disabled = false;
-console.log(hiScore);
+    let scoreWindow = window.open("", "", "width=8rem,height=12rem");
 }
 
