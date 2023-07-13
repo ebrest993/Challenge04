@@ -4,7 +4,6 @@ let timerElement = document.querySelector("#timerEl");
 let button = document.querySelector("#bigbutton");
 let score = 0;
 let initials = "";
-let submitButton = document.getElementById("#submit-button");
 let scoreTab = document.querySelector("#score-tab");
 // let storageItem;
 
@@ -194,7 +193,6 @@ function endGame () {
     document.getElementById("numFive").remove();
     clearInterval(timer);
     initials = document.createElement("textarea");
-    // initials.setAttribute("id")
     initials.setAttribute("placeholder", "Enter Initials");
     initials.setAttribute("maxlength", "3");
     let submit = document.createElement("button");
@@ -203,17 +201,18 @@ function endGame () {
     submit.innerHTML = "SUBMIT";
     document.body.appendChild(initials);
     document.body.appendChild(submit);
-    submitButton = document.addEventListener("click", setScore);
+    
+    let submitButton = document.getElementById("submit-button");
+    submitButton.addEventListener("click", setScore);
 }
 
 
 
-function setScore () {
-    // if (event.target && event.target.matches("#submit-button"));
+function setScore(event) {
     console.log("SO CLOSE");
     event.preventDefault();
-    let initials = document.querySelector("textarea") && document.querySelector("textarea").value;
-    let hiScore = timerCount+score;
+    let initials = document.querySelector("textarea").value;
+    let hiScore = timerCount + score;
     let storageItem;
     if (localStorage.getItem("highScores")) {
         storageItem = JSON.parse(localStorage.getItem("highScores"));
