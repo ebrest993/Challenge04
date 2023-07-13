@@ -27,7 +27,6 @@ After the final question, the user is prompted with a textarea to input their in
 Obviously this is an incomplete challenge. I restarted several times, and found way too much on my plate as a result.
 
 The remains of my to-do list are as follows:
- - add remainder of the 5 questions
  - debug the .remove() method
  - display the high scores and initials upon completion
  - add comments to js file

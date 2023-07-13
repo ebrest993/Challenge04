@@ -92,9 +92,9 @@ function questOne () {
 }
 
 function questTwo () {
-    document.getElementById("numOne").remove();
     let qst = document.createElement("div");
     qst.setAttribute("id", "numTwo");
+    document.getElementById("numOne").remove();
     qst.innerHTML = quest2[0];
     document.body.appendChild(qst);
     for (i = 1; i < quest2.length; i++) {
@@ -125,7 +125,7 @@ function questThree () {
         let btn = document.createElement("button");
         btn.innerHTML = quest3[i];
         document.body.appendChild(btn);
-        btn.addEventListener("click", addScore);
+        btn.addEventListener("click", questFour);
         if (btn.innerHTML === quest3[2]) {
             btn.addEventListener("click", addScore);
         } else {
@@ -134,9 +134,56 @@ function questThree () {
             });
         }
 
-        btn.addEventListener("click", endGame);
     }
 }
+
+function questFour () {
+    document.getElementById("numThree").remove();
+    let qst = document.createElement("div");
+    qst.setAttribute("id", "numFour");
+    qst.innerHTML = quest4[0];
+    document.body.appendChild(qst);
+    for (i = 1; i < quest2.length; i++) {
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "buttons");
+        btn.innerHTML = quest4[i];
+        document.body.appendChild(btn);
+        btn.addEventListener("click", questFive);
+        if (btn.innerHTML === quest4[3]) {
+            console.log("correct");
+            btn.addEventListener("click", addScore);
+        } else {
+            btn.addEventListener("click", function() {
+            console.log("wrong");
+            timerCount = timerCount - 5;
+        });
+        }
+    }
+}   
+function questFive () {
+    document.getElementById("numFour").remove();
+    let qst = document.createElement("div");
+    qst.setAttribute("id", "numFive");
+    qst.innerHTML = quest5[0];
+    document.body.appendChild(qst);
+    for (i = 1; i < quest5.length; i++) {
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "buttons");
+        btn.innerHTML = quest5[i];
+        document.body.appendChild(btn);
+        btn.addEventListener("click", addScore);
+        if (btn.innerHTML === quest5[3]) {
+            console.log("correct");
+            btn.addEventListener("click", addScore);
+        } else {
+            btn.addEventListener("click", function() {
+            console.log("wrong");
+            timerCount = timerCount - 5;
+        });
+        }    
+        btn.addEventListener("click", endGame);
+    }
+}   
 
 function addScore () {
     localStorage.setItem("score", score);
