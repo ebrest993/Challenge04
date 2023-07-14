@@ -10,6 +10,7 @@ let namesTable = document.querySelectorAll(".names");
 let storageItem = [];
 
 
+// What follows are the arrays populated with questions, the answer, and three wrong answers for each.
 
 const quest1 = [
     question = "What does 'CSS' stand for?",
@@ -48,9 +49,12 @@ const quest5 = [
     correct = "A collection of items of same data type stored at contiguous memory locations.",
     answer3 = "Eight"
 ]
+
+//These event listeners either start the game or show a separate tab where the high scores are pulled from local storage and displayed.
 button.addEventListener("click", startGame);
 scoreTab.addEventListener("click", viewScores);
 
+//This displays the high scores in a separate tab.
 function viewScores () {
     scoreTab = window.open("index2.html").focus();
     let test = document.createAttribute("h1");
@@ -63,15 +67,15 @@ function viewScores () {
     // document.close();
 }
 
+//This is the first function that sets off the rest of the game. Here, we disable the start button, set the timer to 30, and pass the next two functions.
 function startGame () {
-    // document.getElementById("submission").display.none;
-    // reset = style.display.none;
     button.disabled = true;
     timerCount = 30;
     startTimer();
     questOne();
 }
 
+//Here we actually start the timer.
 function startTimer () {
     timer = setInterval(function() {
         timerCount--;
@@ -223,7 +227,6 @@ function setScore(event) {
     let initials = document.querySelector("textarea").value;
     // initials = initials.setAttribute("id", "submission");
     let hiScore = timerCount + score;
-    // let storageItem;
     if (localStorage.getItem("highScores")) {
         storageItem = JSON.parse(localStorage.getItem("highScores"));
     } else {
