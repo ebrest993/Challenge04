@@ -59,12 +59,6 @@ function viewScores () {
     scoreTab = window.open("index2.html").focus();
     let test = document.createAttribute("h1");
     test.textContent = "Is this thing on?"
-    // scoreTab = localStorage.getItem("initials");
-    // scoreTab = localStorage.getItem("hiScore");
-    // scoreTab.textContent = "Hello, world!"
-    // document.open();
-    // document.write("<html><body></body></html>");
-    // document.close();
 }
 
 //This is the first function that sets off the rest of the game. Here, we disable the start button, set the timer to 30, and pass the next two functions.
@@ -75,7 +69,7 @@ function startGame () {
     questOne();
 }
 
-//Here we actually start the timer.
+//Here we actually start the timer, and say that if the timer reads zero, it stops.
 function startTimer () {
     timer = setInterval(function() {
         timerCount--;
@@ -85,7 +79,11 @@ function startTimer () {
     }
 }, 1000)}
 
-
+//The first question. Here, we create a div, assign it an ID, populate it with the question, 
+//and append it to the empty form variable. Then, we've got a for loop meant to create four 
+//buttons and populate them with the four possible answers. Finally, there's an if/else state-
+//ment: if the user clicks the wrong answer, we deduct 5 seconds from the timer, if they click 
+//the right answer, we go to another function that adds 2 points to the score.
 function questOne () {
     let qst = document.createElement("div");
     qst.setAttribute("id", "numOne");
@@ -104,9 +102,9 @@ function questOne () {
             timerCount = timerCount - 5;
             });
         }}
-        addScore();        
 }
 
+//All question functions are essentially the same as the questOne function.
 function questTwo () {
     let qst = document.createElement("div");
     qst.setAttribute("id", "numTwo");
@@ -174,6 +172,8 @@ function questFour () {
         }
     }
 }   
+
+//At the end of this the last question, we move into our endGame function.
 function questFive () {
     document.getElementById("numFour").remove();
     let qst = document.createElement("div");
@@ -201,6 +201,10 @@ function addScore () {
     score = score + 2;
     }
 
+//The endGame function stops the timer, clears the last question off the page, and creates
+//a text area to input the user's initial and record their score. Alongside the text box is
+//a submit button, and both are appended to the body. Finally, when the submit button is clicked, 
+//we move on to the setScore function.
 function endGame () {
     document.getElementById("numFive").remove();
     clearInterval(timer);
@@ -219,13 +223,16 @@ function endGame () {
 }
 
 
+//Once the user has submitted their initials, the submit button is disabled. That 
+//text box value along with the user score is then parsed into the highScores key 
+//in local storage and pushed into the empty array storageItem. Finally, the start 
+//game is enabled once again, and the user is free to play again.
 
 function setScore(event) {
-    let donezo = document.getElementById("submit-button");
-    donezo.disabled = true;
+    let finalStep = document.getElementById("submit-button");
+    finalStep.disabled = true;
     event.preventDefault();
     let initials = document.querySelector("textarea").value;
-    // initials = initials.setAttribute("id", "submission");
     let hiScore = timerCount + score;
     if (localStorage.getItem("highScores")) {
         storageItem = JSON.parse(localStorage.getItem("highScores"));
@@ -237,8 +244,10 @@ function setScore(event) {
     button.disabled = false;
 }
 
-logScores();
 
+//This function is how we are displaying the high scores from local storage into the new tab
+//that opens when the user clicks the button in the top right.
+logScores();
 
 function logScores () {
     for (i = 0; i < storageItem.length; i++) {

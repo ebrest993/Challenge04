@@ -28,4 +28,3 @@ Obviously this is an incomplete challenge. I restarted several times, and found 
 
 The remains of my to-do list are as follows:
  - display the high scores and initials upon completion
- - add comments to js file
