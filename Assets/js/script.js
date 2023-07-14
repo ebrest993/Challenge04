@@ -57,9 +57,12 @@ scoreTab.addEventListener("click", viewScores);
 //This displays the high scores in a separate tab.
 function viewScores () {
     scoreTab = window.open("index2.html").focus();
-    let test = document.createAttribute("h1");
-    test.textContent = "Is this thing on?"
-}
+    for (i = 0; i < storageItem.length; i++) {
+        pointsTable = localStorage.getItem("initials");
+        namesTable = localStorage.getItem("hiScore");
+        pointsTable.innerHTML = storageItem[i].score;
+        namesTable.innerHTML = storageItem[i].initials;
+}}
 
 //This is the first function that sets off the rest of the game. Here, we disable the start button, set the timer to 30, and pass the next two functions.
 function startGame () {
@@ -242,16 +245,4 @@ function setScore(event) {
     storageItem.push({initials, hiScore});
     localStorage.setItem("highScores", JSON.stringify(storageItem));
     button.disabled = false;
-}
-
-
-//This function is how we are displaying the high scores from local storage into the new tab
-//that opens when the user clicks the button in the top right.
-logScores();
-
-function logScores () {
-    for (i = 0; i < storageItem.length; i++) {
-        pointsTable = getItem(initials);
-        namesTable = getItem(hiScore);
-    }
 }
