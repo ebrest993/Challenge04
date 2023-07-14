@@ -100,3 +100,8 @@ textarea {
 .numOne {
     display: auto;
 }
+
+table {
+    display: block;
+    text-align: left;
+}

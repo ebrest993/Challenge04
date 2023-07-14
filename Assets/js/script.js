@@ -5,9 +5,10 @@ let button = document.querySelector("#bigbutton");
 let score = 0;
 let initials = "";
 let scoreTab = document.querySelector("#score-tab");
+// let emptyForm = document.getElementById("questForm");
+
 // let storageItem;
 
-// let emptyForm = document.getElementById("questForm");
 // let numOne = document.querySelector("numOne");
 
 const quest1 = [
@@ -51,15 +52,23 @@ button.addEventListener("click", startGame);
 scoreTab.addEventListener("click", viewScores);
 
 function viewScores () {
-    window.open("", "_blank").focus();
-    scoreTab = document.createAttribute("div");
-    scoreTab = localStorage.getItem("initials");
-    scoreTab = localStorage.getItem("hiScore");
+    scoreTab = window.open("index2.html").focus();
+    let test = document.createAttribute("h1");
+    test.textContent = "Is this thing on?"
+    // scoreTab = localStorage.getItem("initials");
+    // scoreTab = localStorage.getItem("hiScore");
+    // scoreTab.textContent = "Hello, world!"
+    // document.open();
+    // document.write("<html><body></body></html>");
+    // document.close();
 }
 
 function startGame () {
+    // document.getElementById("submission").display.none;
+    // reset = style.display.none;
     button.disabled = true;
     timerCount = 30;
+    document.getElementById("questForm").style.display = "none";
     startTimer();
     questOne();
 }
@@ -209,9 +218,12 @@ function endGame () {
 
 
 function setScore(event) {
+    let donezo = document.getElementById("submit-button");
+    donezo.disabled = true;
     console.log("SO CLOSE");
     event.preventDefault();
     let initials = document.querySelector("textarea").value;
+    // initials = initials.setAttribute("id", "submission");
     let hiScore = timerCount + score;
     let storageItem;
     if (localStorage.getItem("highScores")) {
@@ -222,6 +234,5 @@ function setScore(event) {
     storageItem.push({initials, hiScore});
     localStorage.setItem("highScores", JSON.stringify(storageItem));
     button.disabled = false;
-
 }
 
